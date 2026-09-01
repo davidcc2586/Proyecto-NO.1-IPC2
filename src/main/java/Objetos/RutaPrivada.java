@@ -1,4 +1,4 @@
-package Logica.Objetos;
+package Objetos;
 
 public class RutaPrivada {
     private int id_rutaPrivada;

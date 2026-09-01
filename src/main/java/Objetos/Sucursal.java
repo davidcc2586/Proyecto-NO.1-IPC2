@@ -1,4 +1,4 @@
-package Logica.Objetos;
+package Objetos;
 
 public class Sucursal{
     private int id_sucursal;

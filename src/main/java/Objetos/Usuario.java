@@ -1,7 +1,9 @@
-package Logica.Objetos;
+package Objetos;
 
 public class Usuario {
     private int id_usuario;
+    private String usuario;
+    private String rol;
     private String nombre;
     private String apellido;
     private String dpi;
@@ -16,8 +18,10 @@ public class Usuario {
 
     }
 
-    public Usuario(int id_usuario, String nombre, String apellido, String dpi, String telefono, String direccion, String correo, String nit, double saldoCartera) {
+    public Usuario(int id_usuario, String usuario, String rol, String nombre, String apellido, String dpi, String telefono, String direccion, String correo, String nit, double saldoCartera) {
         this.id_usuario = id_usuario;
+        this.usuario = usuario;
+        this.rol = rol;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dpi = dpi;
@@ -28,7 +32,11 @@ public class Usuario {
         this.saldoCartera = saldoCartera;
     }
 
-    public int getIs_usuario() {
+    public String getRol() {
+        return rol;
+    }
+
+    public int getId_usuario() {
         return id_usuario;
     }
 
@@ -64,7 +72,15 @@ public class Usuario {
         return saldoCartera;
     }
 
-    public void setIs_usuario(int id_usuario) {
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
 
@@ -98,5 +114,9 @@ public class Usuario {
 
     public void setSaldoCartera(double saldoCartera) {
         this.saldoCartera = saldoCartera;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }

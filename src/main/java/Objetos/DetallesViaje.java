@@ -1,12 +1,11 @@
-package Logica.Objetos;
+package Objetos;
 
 import java.time.LocalTime;
 
 public class DetallesViaje {
 
     private int id_detalleViaje;
-    private int id_bus;
-    private int id_chofer;
+    private int id_viaje;
     private LocalTime horaSalida;
     private int KilometrajeInicio;
     private LocalTime horaLlegada;
@@ -19,10 +18,9 @@ public class DetallesViaje {
 
     }
 
-    public DetallesViaje(int id_detalleViaje, int id_bus, int id_chofer, LocalTime horaSalida, int kilometrajeInicio, LocalTime horaLlegada, int kilometrajeLlegada, double combustibleUtilizado, double salarioChofer, double aproximadoDepreciacion) {
+    public DetallesViaje(int id_detalleViaje, int id_viaje, LocalTime horaSalida, int kilometrajeInicio, LocalTime horaLlegada, int kilometrajeLlegada, double combustibleUtilizado, double salarioChofer, double aproximadoDepreciacion) {
         this.id_detalleViaje = id_detalleViaje;
-        this.id_bus = id_bus;
-        this.id_chofer = id_chofer;
+        this.id_viaje = id_viaje;
         this.horaSalida = horaSalida;
         KilometrajeInicio = kilometrajeInicio;
         this.horaLlegada = horaLlegada;
@@ -36,12 +34,8 @@ public class DetallesViaje {
         return id_detalleViaje;
     }
 
-    public int getId_bus() {
-        return id_bus;
-    }
-
-    public int getId_chofer() {
-        return id_chofer;
+    public int getId_viaje() {
+        return id_viaje;
     }
 
     public LocalTime getHoraSalida() {
@@ -76,12 +70,8 @@ public class DetallesViaje {
         this.id_detalleViaje = id_detalleViaje;
     }
 
-    public void setId_bus(int id_bus) {
-        this.id_bus = id_bus;
-    }
-
-    public void setId_chofer(int id_chofer) {
-        this.id_chofer = id_chofer;
+    public void setId_viaje(int id_viaje) {
+        this.id_viaje = id_viaje;
     }
 
     public void setHoraSalida(LocalTime horaSalida) {

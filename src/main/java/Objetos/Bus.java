@@ -1,15 +1,13 @@
-package Logica.Objetos;
-
-import java.awt.*;
+package Objetos;
 
 public class Bus {
 
     private int id_bus;
-    private Image imagen;
+    private String imagen;
     private String numeroPlaca;
     private String marca;
     private String modelo;
-    private String añoFabricacion;
+    private int añoFabricacion;
     private int capacidadPasajeros;
     private int kilometrajeActual;
     private String estadoActividad;
@@ -20,7 +18,7 @@ public class Bus {
 
     }
 
-    public Bus(int id_bus, Image imagen, String numeroPlaca, String marca, String modelo, String añoFabricacion, int capacidadPasajeros, int kilometrajeActual, String estadoActividad, String estado, int id_sucursal) {
+    public Bus(int id_bus, String imagen, String numeroPlaca, String marca, String modelo, int añoFabricacion, int capacidadPasajeros, int kilometrajeActual, String estadoActividad, String estado, int id_sucursal) {
         this.id_bus = id_bus;
         this.imagen = imagen;
         this.numeroPlaca = numeroPlaca;
@@ -34,12 +32,11 @@ public class Bus {
         this.id_sucursal = id_sucursal;
     }
 
-
     public int getId_bus() {
         return id_bus;
     }
 
-    public Image getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
@@ -55,7 +52,7 @@ public class Bus {
         return modelo;
     }
 
-    public String getAñoFabricacion() {
+    public int getAñoFabricacion() {
         return añoFabricacion;
     }
 
@@ -83,8 +80,12 @@ public class Bus {
         this.id_bus = id_bus;
     }
 
-    public void setImagen(Image imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public void setAñoFabricacion(int añoFabricacion) {
+        this.añoFabricacion = añoFabricacion;
     }
 
     public void setNumeroPlaca(String numeroPlaca) {
@@ -97,10 +98,6 @@ public class Bus {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
-    }
-
-    public void setAñoFabricacion(String añoFabricacion) {
-        this.añoFabricacion = añoFabricacion;
     }
 
     public void setCapacidadPasajeros(int capacidadPasajeros) {

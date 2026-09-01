@@ -1,4 +1,4 @@
-package Logica.Objetos;
+package Objetos;
 
 import java.time.LocalDateTime;
 

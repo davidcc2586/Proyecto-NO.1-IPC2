@@ -1,11 +1,10 @@
-package Logica.Objetos;
+package Objetos;
 
-import java.awt.*;
 import java.time.LocalDate;
 
 public class Chofer {
     private int id_chofer;
-    private Image foto;
+    private String foto;
     private String nombre;
     private String apellido;
     private String licencia;
@@ -21,7 +20,7 @@ public class Chofer {
 
     }
 
-    public Chofer(int id_chofer, Image foto, String nombre, String apellido, String licencia, String tipoLicencia, LocalDate vencimientoLicencia, String telefono, Double salarioBaseViaje, String estadoActividad, String estado, int id_sucursal) {
+    public Chofer(int id_chofer, String foto, String nombre, String apellido, String licencia, String tipoLicencia, LocalDate vencimientoLicencia, String telefono, Double salarioBaseViaje, String estadoActividad, String estado, int id_sucursal) {
         this.id_chofer = id_chofer;
         this.foto = foto;
         this.nombre = nombre;
@@ -40,7 +39,7 @@ public class Chofer {
         return id_chofer;
     }
 
-    public Image getFoto() {
+    public String getFoto() {
         return foto;
     }
 
@@ -88,7 +87,7 @@ public class Chofer {
         this.id_chofer = id_chofer;
     }
 
-    public void setFoto(Image foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 

@@ -1,9 +1,9 @@
-package Logica.Objetos;
+package Objetos;
 
 public class Transaccion {
     private int id_transaccion;
     private String tipo;
-    private int id_detallesTransaccion;//ya se que se algun gasto de la empresa con el id o el id de la compra de un boleto
+    private int id_detallesTransaccion;//ya se que se algun gasto de la empresa con el id o el id de la compra de un boleto o viaje de alquiler
     private double total;
 
     public Transaccion(int id_transaccion, String tipo, int id_detallesTransaccion, double total) {
