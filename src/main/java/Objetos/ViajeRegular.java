@@ -7,8 +7,8 @@ public class ViajeRegular extends Viaje{
     private int id_viajeRegular;
     private int id_rutaRegular;
 
-    public ViajeRegular(int id_bus, int id_chofer, int cantidadPasajeros, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaEstimadaRegreso, LocalTime horaEstimadaRegreso, String estadoViaje, int id_detallesViaje, int id_viajeRegular, int id_rutaRegular) {
-        super(id_bus, id_chofer, cantidadPasajeros, fechaSalida, horaSalida, fechaEstimadaRegreso, horaEstimadaRegreso, estadoViaje, id_detallesViaje);
+    public ViajeRegular(int id_sucursal, int id_bus, int id_chofer, int cantidadPasajeros, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaEstimadaLlegada, LocalTime horaEstimadaLlegada, String estadoViaje, int id_detallesViaje, int id_viajeRegular, int id_rutaRegular) {
+        super(id_sucursal, id_bus, id_chofer, cantidadPasajeros, fechaSalida, horaSalida, fechaEstimadaLlegada, horaEstimadaLlegada, estadoViaje, id_detallesViaje);
         this.id_viajeRegular = id_viajeRegular;
         this.id_rutaRegular = id_rutaRegular;
     }

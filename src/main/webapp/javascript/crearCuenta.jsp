@@ -9,7 +9,7 @@
 <h2>Crear cuenta</h2>
 
 <form action="/Proyecto_1_IPC2/CrearCuentaServlet" method="POST">
-    <p> <label for="nombre">Nombres:</label> <input type="text" name="nombre" placeholder="nombres"></p>
+    <p> <label for="">Nombres:</label> <input type="text" name="nombre" placeholder="nombres"></p>
     <p> <label for="apellido">Apellidos:</label> <input type="text" name="apellido" placeholder="apellidos"></p>
     <p> <label for="dpi">DPI:</label> <input type="text" name="dpi" placeholder="xxxxxxxxxxxxx"></p>
     <p> <label for="telefono">Teléfono:</label> <input type="text" name="telefono" placeholder="(XXXX XXXX)"></p>

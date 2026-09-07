@@ -41,8 +41,7 @@ public class InicioSesionServlet extends HttpServlet {
                 request.getSession().setAttribute("usuario", usuario.get());
                 switch (usuario.get().getRol()) {
                     case "VIAJERO":
-                        request.setAttribute("usuario", usuario);
-                        request.getRequestDispatcher("javascript/ventanaInicioCliente.jsp").forward(request, response);
+                        request.getRequestDispatcher("/javascript/VentanaCliente/ventanaInicioCliente.jsp").forward(request, response);
                         break;
                     case "ADMIN_SISTEMA":
 

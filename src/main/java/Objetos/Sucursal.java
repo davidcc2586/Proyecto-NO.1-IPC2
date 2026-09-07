@@ -6,8 +6,10 @@ public class Sucursal{
     private String municipio;
     private double latitud;
     private double longitud;
+    private String direccion;
     private String telefono;
     private String correo;
+    private String estado;
     /*
     private List<Usuario> usuarios;
     private List<Bus> buses;
@@ -20,14 +22,16 @@ public class Sucursal{
 
      */
 
-    public Sucursal(int id_sucursal, String departamento, String municipio, double latitud, double longitud, String telefono, String correo) {
+    public Sucursal(int id_sucursal, String departamento, String municipio, double latitud, double longitud, String direccion, String telefono, String correo, String estado) {
         this.id_sucursal = id_sucursal;
         this.departamento = departamento;
         this.municipio = municipio;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.direccion = direccion;
         this.telefono = telefono;
         this.correo = correo;
+        this.estado = estado;
     }
 
     public int getId_sucursal() {
@@ -58,6 +62,14 @@ public class Sucursal{
         return correo;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
     public void setId_sucursal(int id_sucursal) {
         this.id_sucursal = id_sucursal;
     }
@@ -84,5 +96,13 @@ public class Sucursal{
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }

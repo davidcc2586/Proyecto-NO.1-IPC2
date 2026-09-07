@@ -4,26 +4,32 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Viaje {
+    protected int id_sucursal;
     protected int id_bus;
     protected int id_chofer;
     protected int cantidadPasajeros;
     protected LocalDate fechaSalida;
     protected LocalTime horaSalida;
-    protected LocalDate fechaEstimadaRegreso;
-    protected LocalTime HoraEstimadaRegreso;
+    protected LocalDate fechaEstimadaLlegada;
+    protected LocalTime HoraEstimadaLlegada;
     protected String estadoViaje;
     protected int id_detallesViaje;
 
-    public Viaje(int id_bus, int id_chofer, int cantidadPasajeros, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaEstimadaRegreso, LocalTime horaEstimadaRegreso, String estadoViaje, int id_detallesViaje) {
+    public Viaje(int id_sucursal, int id_bus, int id_chofer, int cantidadPasajeros, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaEstimadaLlegada, LocalTime horaEstimadaLlegada, String estadoViaje, int id_detallesViaje) {
+        this.id_sucursal = id_sucursal;
         this.id_bus = id_bus;
         this.id_chofer = id_chofer;
         this.cantidadPasajeros = cantidadPasajeros;
         this.fechaSalida = fechaSalida;
         this.horaSalida = horaSalida;
-        this.fechaEstimadaRegreso = fechaEstimadaRegreso;
-        HoraEstimadaRegreso = horaEstimadaRegreso;
+        this.fechaEstimadaLlegada = fechaEstimadaLlegada;
+        HoraEstimadaLlegada = horaEstimadaLlegada;
         this.estadoViaje = estadoViaje;
         this.id_detallesViaje = id_detallesViaje;
+    }
+
+    public int getId_sucursal() {
+        return id_sucursal;
     }
 
     public int getId_bus() {
@@ -46,12 +52,12 @@ public class Viaje {
         return horaSalida;
     }
 
-    public LocalDate getFechaEstimadaRegreso() {
-        return fechaEstimadaRegreso;
+    public LocalDate getFechaEstimadaLlegada() {
+        return fechaEstimadaLlegada;
     }
 
-    public LocalTime getHoraEstimadaRegreso() {
-        return HoraEstimadaRegreso;
+    public LocalTime getHoraEstimadaLlegada() {
+        return HoraEstimadaLlegada;
     }
 
     public String getEstadoViaje() {
@@ -60,6 +66,10 @@ public class Viaje {
 
     public int getId_detallesViaje() {
         return id_detallesViaje;
+    }
+
+    public void setId_sucursal(int id_sucursal) {
+        this.id_sucursal = id_sucursal;
     }
 
     public void setId_bus(int id_bus) {
@@ -82,12 +92,12 @@ public class Viaje {
         this.horaSalida = horaSalida;
     }
 
-    public void setFechaEstimadaRegreso(LocalDate fechaEstimadaRegreso) {
-        this.fechaEstimadaRegreso = fechaEstimadaRegreso;
+    public void setFechaEstimadaLlegada(LocalDate fechaEstimadaLlegada) {
+        this.fechaEstimadaLlegada = fechaEstimadaLlegada;
     }
 
-    public void setHoraEstimadaRegreso(LocalTime horaEstimadaRegreso) {
-        HoraEstimadaRegreso = horaEstimadaRegreso;
+    public void setHoraEstimadaLlegada(LocalTime horaEstimadaLlegada) {
+        HoraEstimadaLlegada = horaEstimadaLlegada;
     }
 
     public void setEstadoViaje(String estadoViaje) {

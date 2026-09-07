@@ -15,14 +15,15 @@
 
 <h1>¡Bienvenido a "Buses Extraurbanos Xela"!</h1>
 
-<form ACTION="InicioSesionServlet" METHOD="post">
+<form ACTION="${pageContext.request.contextPath}/InicioSesionServlet" METHOD="POST">
     <p><label for="usuario">Usuario:</label><input type="text" name ="usuario" placeholder="Usuario"></p>
     <p><label for="contraseña">Contraseña:</label><input type="password" name ="clave" placeholder="Contraseña"></p>
     <button type="submit">Iniciar Sesión</button>
 </form>
+
 <button type="button" onclick="crearNuevaCuenta()">Crear Cuenta</button>
 
 <p>${mensaje}</p>
-
+<script src="/Proyecto_1_IPC2/javascript/inicio.js"></script>
 </body>
 </html>

@@ -1,13 +1,13 @@
 package BaseDatos;
 
+import Objetos.Enums.EstadoSolicitudViajePrivado;
 import Objetos.Usuario;
 
+import javax.naming.PartialResultException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class UsuarioDB {
@@ -67,57 +67,142 @@ public class UsuarioDB {
         return elementoRepetido;
     }
 
-    public String verificarDatosRepetidos(String dpi, String usuario, String correo, String nit) throws SQLException{
+    public String verificarDatosRepetidos(String dpi, String usuario, String correo, String nit) throws SQLException {
         crearConexion();
-        String sqlSolicitarUsuarioMismoDpi = "SELECT * FROM Usuario WHERE dpi = ?";
-        String sqlSolicitarUsuarioMismoUsuario = "SELECT * FROM Usuario WHERE usuario = ?";
-        String sqlSolicitarUsuarioMismoCorreo = "SELECT * FROM Usuario WHERE correo = ?";
-        String sqlSolicitarUsuarioMismoNit = "SELECT * FROM Usuario WHERE nit = ?";
 
-        PreparedStatement preparedStatementPdi = connection.prepareStatement(sqlSolicitarUsuarioMismoDpi);
-        preparedStatementPdi.setString(1, dpi);
-        ResultSet resultadoDpi = preparedStatementPdi.executeQuery();
-        if(resultadoDpi.next()){
-            return "dpi";
-        }
+        try {
+            connection.setAutoCommit(false);
 
-        PreparedStatement preparedStatementUsuario = connection.prepareStatement(sqlSolicitarUsuarioMismoUsuario);
-        preparedStatementUsuario.setString(1, usuario);
-        ResultSet resultadUsuario = preparedStatementUsuario.executeQuery();
-        if(resultadUsuario.next()){
-            return "usuario";
-        }
+            String sqlSolicitarUsuarioMismoDpi = "SELECT * FROM Usuario WHERE dpi = ?";
+            String sqlSolicitarUsuarioMismoUsuario = "SELECT * FROM Usuario WHERE usuario = ?";
+            String sqlSolicitarUsuarioMismoCorreo = "SELECT * FROM Usuario WHERE correo = ?";
+            String sqlSolicitarUsuarioMismoNit = "SELECT * FROM Usuario WHERE nit = ?";
 
-        PreparedStatement preparedStatementCorreo = connection.prepareStatement(sqlSolicitarUsuarioMismoCorreo);
-        preparedStatementCorreo.setString(1, correo);
-        ResultSet resultadCorreo = preparedStatementCorreo.executeQuery();
-        if(resultadCorreo.next()){
-            return "correo";
-        }
+            PreparedStatement preparedStatementPdi = connection.prepareStatement(sqlSolicitarUsuarioMismoDpi);
+            preparedStatementPdi.setString(1, dpi);
+            ResultSet resultadoDpi = preparedStatementPdi.executeQuery();
+            if (resultadoDpi.next()) {
+                connection.commit();
+                connection.setAutoCommit(true);
+                cerrarConexion();
+                return "dpi";
+            }
 
-        PreparedStatement preparedStatementNit = connection.prepareStatement(sqlSolicitarUsuarioMismoNit);
-        preparedStatementNit.setString(1, nit);
-        ResultSet resultadoNit = preparedStatementNit.executeQuery();
-        if(resultadoNit.next()){
-            return "nit";
+            PreparedStatement preparedStatementUsuario = connection.prepareStatement(sqlSolicitarUsuarioMismoUsuario);
+            preparedStatementUsuario.setString(1, usuario);
+            ResultSet resultadUsuario = preparedStatementUsuario.executeQuery();
+            if (resultadUsuario.next()) {
+                connection.commit();
+                connection.setAutoCommit(true);
+                cerrarConexion();
+                return "usuario";
+            }
+
+            PreparedStatement preparedStatementCorreo = connection.prepareStatement(sqlSolicitarUsuarioMismoCorreo);
+            preparedStatementCorreo.setString(1, correo);
+            ResultSet resultadCorreo = preparedStatementCorreo.executeQuery();
+            if (resultadCorreo.next()) {
+                connection.commit();
+                connection.setAutoCommit(true);
+                cerrarConexion();
+                return "correo";
+            }
+
+            PreparedStatement preparedStatementNit = connection.prepareStatement(sqlSolicitarUsuarioMismoNit);
+            preparedStatementNit.setString(1, nit);
+            ResultSet resultadoNit = preparedStatementNit.executeQuery();
+            if (resultadoNit.next()) {
+                connection.commit();
+                connection.setAutoCommit(true);
+                cerrarConexion();
+                return "nit";
+            }
+
+            connection.commit();
+            connection.setAutoCommit(true);
+            cerrarConexion();
+            return "ninguno";
+
+        } catch (SQLException e) {
+            if (connection != null) {
+                connection.rollback();
+                connection.setAutoCommit(true);
+                cerrarConexion();
+            }
+            throw e;
         }
-        cerrarConexion();
-        return "ninguno";
     }
 
-    public List<Usuario> ObtenerElementosDB() throws SQLException {
+    public void agregarSaldoCartera(int idUsuario, double cantidadAgregar) throws SQLException {
         crearConexion();
-        List<Usuario> usuarios = new ArrayList<>();
-        String consultarUsuariosExistente = "SELECT * FROM Usuario";
-
-        PreparedStatement preparedStatement = connection.prepareStatement(consultarUsuariosExistente);
-        ResultSet resultado = preparedStatement.executeQuery();
-        while (resultado.next()){
-
-        }
+        String sqlAgregarSalfo = "UPDATE Usuario SET saldoCartera = saldoCartera + ? WHERE id_usuario = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlAgregarSalfo);
+        preparedStatement.setDouble(1, cantidadAgregar);
+        preparedStatement.setInt(2, idUsuario);
+        preparedStatement.execute();
         cerrarConexion();
-        return usuarios;
     }
+
+    public void  actualizarDatos(int id, String telefono, String direccion, String correo, String usuario) throws SQLException{
+        crearConexion();
+        String ingresarUsuarioDB = "UPDATE Usuario SET telefono = ?, direccion = ?, correo = ?, usuario = ? WHERE id_usuario = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(ingresarUsuarioDB);
+        preparedStatement.setString(1,telefono);
+        preparedStatement.setString(2, direccion);
+        preparedStatement.setString(3, correo);
+        preparedStatement.setString(4, usuario);
+        preparedStatement.setInt(5,id);
+        preparedStatement.execute();
+        cerrarConexion();
+    }
+
+    public void  actualizarDatos(int id, String telefono, String direccion, String correo, String usuario, String clave) throws SQLException{
+        crearConexion();
+        String ingresarUsuarioDB = "UPDATE Usuario SET telefono = ?, direccion = ?, correo = ?, usuario = ?, clave = ? WHERE id_usuario = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(ingresarUsuarioDB);
+        preparedStatement.setString(1,telefono);
+        preparedStatement.setString(2, direccion);
+        preparedStatement.setString(3, correo);
+        preparedStatement.setString(4, usuario);
+        preparedStatement.setString(5, clave);
+        preparedStatement.setInt(6,id);
+        preparedStatement.execute();
+        cerrarConexion();
+    }
+
+    public void pagarSolicitudViaje(int idUsuario, int idSolicitudViaje, double cantidad) throws SQLException {
+        crearConexion();
+
+        try {
+            connection.setAutoCommit(false);
+
+            String sqlRestarCantidad = "UPDATE Usuario SET saldoCartera = saldoCartera - ? WHERE id_usuario = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlRestarCantidad);
+            preparedStatement.setDouble(1,cantidad);
+            preparedStatement.setInt(2,idUsuario);
+            preparedStatement.execute();
+
+            String sqlActualizarSolicitud = "UPDATE SolicitudViajePrivado SET estadoPago = ? WHERE id_solicitudViajePrivado = ?";
+            String nuevoEstadoPago = EstadoSolicitudViajePrivado.CANCELADO.name();
+            PreparedStatement psActualizarSolicitud = connection.prepareStatement(sqlActualizarSolicitud);
+            psActualizarSolicitud.setString(1,nuevoEstadoPago);
+            psActualizarSolicitud.setInt(2,idSolicitudViaje);
+            psActualizarSolicitud.execute();
+
+
+            connection.commit();
+            connection.setAutoCommit(true);
+            cerrarConexion();
+        } catch (SQLException e) {
+            if (connection != null) {
+                connection.rollback();
+                connection.setAutoCommit(true);
+                cerrarConexion();
+            }
+            throw e;
+        }
+    }
+
 
     private void crearConexion(){
         ConexionDB conexionDB = new ConexionDB();

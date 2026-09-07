@@ -1,5 +1,6 @@
 package Objetos;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Boleto {
@@ -8,13 +9,13 @@ public class Boleto {
     private int id_viajeRegular;
     private int numeroAsiento;
     private double precio;
-    private LocalDateTime fechaCompra;
+    private LocalDate fechaCompra;
 
     public Boleto(){
 
     }
 
-    public Boleto(int id_boleto, int id_usuario, int id_viajeRegular, int numeroAsiento, double precio, LocalDateTime fechaCompra) {
+    public Boleto(int id_boleto, int id_usuario, int id_viajeRegular, int numeroAsiento, double precio, LocalDate fechaCompra) {
         this.id_boleto = id_boleto;
         this.id_usuario = id_usuario;
         this.id_viajeRegular = id_viajeRegular;
@@ -43,7 +44,7 @@ public class Boleto {
         return precio;
     }
 
-    public LocalDateTime getFechaCompra() {
+    public LocalDate getFechaCompra() {
         return fechaCompra;
     }
 
@@ -67,7 +68,7 @@ public class Boleto {
         this.precio = precio;
     }
 
-    public void setFechaCompra(LocalDateTime fechaCompra) {
+    public void setFechaCompra(LocalDate fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
 }
