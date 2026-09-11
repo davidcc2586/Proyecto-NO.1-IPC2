@@ -2,6 +2,7 @@ package Objetos;
 
 public class Usuario {
     private int id_usuario;
+    private int id_sucursalAdministra;
     private String usuario;
     private String rol;
     private String nombre;
@@ -20,6 +21,21 @@ public class Usuario {
 
     public Usuario(int id_usuario, String usuario, String rol, String nombre, String apellido, String dpi, String telefono, String direccion, String correo, String nit, double saldoCartera) {
         this.id_usuario = id_usuario;
+        this.usuario = usuario;
+        this.rol = rol;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dpi = dpi;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.nit = nit;
+        this.saldoCartera = saldoCartera;
+    }
+
+    public Usuario(int id_usuario, int id_sucursalAdministra, String usuario, String rol, String nombre, String apellido, String dpi, String telefono, String direccion, String correo, String nit, double saldoCartera) {
+        this.id_usuario = id_usuario;
+        this.id_sucursalAdministra = id_sucursalAdministra;
         this.usuario = usuario;
         this.rol = rol;
         this.nombre = nombre;
@@ -76,6 +92,10 @@ public class Usuario {
         return usuario;
     }
 
+    public int getId_sucursalAdministra() {
+        return id_sucursalAdministra;
+    }
+
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
@@ -120,5 +140,7 @@ public class Usuario {
         this.rol = rol;
     }
 
-
+    public void setId_sucursalAdministra(int id_sucursalAdministra) {
+        this.id_sucursalAdministra = id_sucursalAdministra;
+    }
 }

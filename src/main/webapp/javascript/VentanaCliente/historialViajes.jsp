@@ -13,6 +13,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    Usuario usuario = (Usuario) session.getAttribute("usuario");
     BoletoDB boletoDB = new BoletoDB();
     ViajeRegularDB viajeRegularDB = new ViajeRegularDB();
     RutaRegularDB rutaRegularDB = new RutaRegularDB();
@@ -39,7 +40,6 @@
         <th>Precio</th>
     </tr>
     <%
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
         try {
             List<Boleto> boletos = boletoDB.boletosUsuario(usuario.getId_usuario());
             if(boletos != null &&  !boletos.isEmpty()){

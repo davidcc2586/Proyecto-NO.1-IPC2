@@ -13,9 +13,8 @@ public class Viaje {
     protected LocalDate fechaEstimadaLlegada;
     protected LocalTime HoraEstimadaLlegada;
     protected String estadoViaje;
-    protected int id_detallesViaje;
 
-    public Viaje(int id_sucursal, int id_bus, int id_chofer, int cantidadPasajeros, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaEstimadaLlegada, LocalTime horaEstimadaLlegada, String estadoViaje, int id_detallesViaje) {
+    public Viaje(int id_sucursal, int id_bus, int id_chofer, int cantidadPasajeros, LocalDate fechaSalida, LocalTime horaSalida, LocalDate fechaEstimadaLlegada, LocalTime horaEstimadaLlegada, String estadoViaje) {
         this.id_sucursal = id_sucursal;
         this.id_bus = id_bus;
         this.id_chofer = id_chofer;
@@ -25,7 +24,6 @@ public class Viaje {
         this.fechaEstimadaLlegada = fechaEstimadaLlegada;
         HoraEstimadaLlegada = horaEstimadaLlegada;
         this.estadoViaje = estadoViaje;
-        this.id_detallesViaje = id_detallesViaje;
     }
 
     public int getId_sucursal() {
@@ -64,10 +62,6 @@ public class Viaje {
         return estadoViaje;
     }
 
-    public int getId_detallesViaje() {
-        return id_detallesViaje;
-    }
-
     public void setId_sucursal(int id_sucursal) {
         this.id_sucursal = id_sucursal;
     }
@@ -104,7 +98,4 @@ public class Viaje {
         this.estadoViaje = estadoViaje;
     }
 
-    public void setId_detallesViaje(int id_detallesViaje) {
-        this.id_detallesViaje = id_detallesViaje;
-    }
 }

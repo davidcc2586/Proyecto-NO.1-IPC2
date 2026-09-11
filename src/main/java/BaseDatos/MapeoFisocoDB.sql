@@ -23,6 +23,7 @@ CREATE TABLE ConfiguracionSucursal(
 
 CREATE TABLE Usuario(
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    id_sucursal INT,
     usuario VARCHAR(20) NOT NULL UNIQUE,
     clave VARCHAR(20) NOT NULL,
     rol ENUM('VIAJERO', 'ADMIN_SISTEMA', 'ADMIN_SUCURSAL') NOT NULL,
@@ -33,12 +34,14 @@ CREATE TABLE Usuario(
     direccion VARCHAR(50) NOT NULL,
     correo VARCHAR(50) NOT NULL UNIQUE,
     nit VARCHAR(20) NOT NULL unique,
-    saldoCartera DOUBLE(10,2) DEFAULT 0.0
+    saldoCartera DOUBLE(10,2) DEFAULT 0.0,
+    FOREIGN KEY (id_sucursal) REFERENCES Sucursal(id_sucursal) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Bus(
     id_bus INT AUTO_INCREMENT PRIMARY KEY,
     id_sucursal INT NOT NULL,
+    id_sucursalUbicacionActual INT,
     imagen VARCHAR(50) NOT NULL,
     numeroPlaca VARCHAR(50) NOT NULL,
     marca VARCHAR(50) NOT NULL,
@@ -48,7 +51,8 @@ CREATE TABLE Bus(
     kilometrajeActual INT NOT NULL,
     estadoActividad ENUM('LIBRE', 'PROGRAMADO', 'VIAJANDO') DEFAULT 'LIBRE',
     estado ENUM('HABILITADO', 'DESHABILITADO') DEFAULT 'HABILITADO',
-    FOREIGN KEY (id_sucursal) REFERENCES Sucursal(id_sucursal) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (id_sucursal) REFERENCES Sucursal(id_sucursal) ON DELETE CASCADE,
+    FOREIGN KEY (id_sucursalUbicacionActual) REFERENCES Sucursal(id_sucursal) ON DELETE CASCADE
 );
 
 CREATE TABLE Chofer(
@@ -117,7 +121,7 @@ CREATE TABLE ViajeAlquiler(
     horaSalida TIME NOT NULL,
     fechaEstimadaRegreso DATE NOT NULL,
     HoraEstimadaRegreso TIME NOT NULL,
-    estadoViaje ENUM('PROGRAMADO', 'VIAJANDO') DEFAULT 'PROGRAMADO',
+    estadoViaje ENUM('PROGRAMADO', 'VIAJANDO', 'FINALIZADO', 'CANCELADO') DEFAULT 'PROGRAMADO',
     id_detallesViaje INT,
     FOREIGN KEY (id_UsuarioContratista) REFERENCES Usuario(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (id_bus) REFERENCES Bus(id_bus) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -136,8 +140,8 @@ CREATE TABLE DetallesViaje(
     combustibleUtilizado DOUBLE(10,2) NOT NULL,
     salarioChofer DOUBLE(10,2) NOT NULL,
     aproximadoDepreciacion DOUBLE(10,2) NOT NULL,
-    FOREIGN KEY (id_viajeRegular) REFERENCES ViajeRegular(id_viajeRegular) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (id_viajeAlquiler) REFERENCES ViajeAlquiler(id_viajeAlquiler) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (id_viajeRegular) REFERENCES ViajeRegular(id_viajeRegular),
+    FOREIGN KEY (id_viajeAlquiler) REFERENCES ViajeAlquiler(id_viajeAlquiler)
 );
 
 CREATE TABLE Boleto(

@@ -10,8 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SucursalDB {
-    private Connection connection ;
+public class SucursalDB  extends DB {
 
     public SucursalDB(){
 
@@ -59,12 +58,4 @@ public class SucursalDB {
         return new Sucursal(id_sucursal, departamento,municipio,latitud,longitud,direccion,telefono,correo,estado);
     }
 
-    private void crearConexion(){
-        ConexionDB conexionDB = new ConexionDB();
-        connection = conexionDB.getConnection();
-    }
-
-    private void cerrarConexion() throws SQLException {
-        connection.close();
-    }
 }

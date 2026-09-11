@@ -10,8 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class UsuarioDB {
-    private Connection connection;
+public class UsuarioDB  extends DB{
 
     public UsuarioDB(){
 
@@ -27,6 +26,7 @@ public class UsuarioDB {
         ResultSet resultado = preparedStatement.executeQuery();
         if(resultado.next()){
             int id_usuario = resultado.getInt("id_usuario");
+            int id_sucursalAdministra = resultado.getInt("id_sucursal");
             String nombreUsuario = resultado.getString("usuario");
             String rol = resultado.getString("rol");
             String nombre = resultado.getString("nombre");
@@ -37,7 +37,11 @@ public class UsuarioDB {
             String correo = resultado.getNString("correo");
             String nit = resultado.getString("nit");
             double saldoCartera = resultado.getDouble("saldoCartera");
-            usuario = Optional.of(new Usuario(id_usuario,nombreUsuario,rol,nombre,apellido,dpi,telefono,direccion,correo,nit,saldoCartera));
+            if(id_sucursalAdministra != 0){
+                usuario = Optional.of(new Usuario(id_usuario,id_sucursalAdministra,nombreUsuario,rol,nombre,apellido,dpi,telefono,direccion,correo,nit,saldoCartera));
+            } else{
+                usuario = Optional.of(new Usuario(id_usuario,nombreUsuario,rol,nombre,apellido,dpi,telefono,direccion,correo,nit,saldoCartera));
+            }
         }
         cerrarConexion();
         return usuario;
@@ -203,13 +207,4 @@ public class UsuarioDB {
         }
     }
 
-
-    private void crearConexion(){
-        ConexionDB conexionDB = new ConexionDB();
-        connection = conexionDB.getConnection();
-    }
-
-    private void cerrarConexion() throws SQLException {
-        connection.close();
-    }
 }

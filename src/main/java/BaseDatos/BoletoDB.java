@@ -12,8 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoletoDB {
-    private Connection connection;
+public class BoletoDB extends DB {
 
     public BoletoDB () {}
 
@@ -105,15 +104,5 @@ public class BoletoDB {
         double precio = resultSet.getDouble("precio");
         LocalDate fechaCompra = resultSet.getDate("fechaCompra").toLocalDate();
         return new Boleto(id_boleto,id_usuario,id_viajeRegular,numeroAsiento,precio,fechaCompra);
-    }
-    private void crearConexion(){
-        ConexionDB conexionDB = new ConexionDB();
-        connection = conexionDB.getConnection();
-    }
-
-    private void cerrarConexion() throws SQLException {
-        if (connection != null && !connection.isClosed()) {
-            connection.close();
-        }
     }
 }

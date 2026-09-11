@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ViajeRegularDB {
-    private Connection connection;
+public class ViajeRegularDB  extends DB {
 
     public ViajeRegularDB() {
 
@@ -64,17 +63,8 @@ public class ViajeRegularDB {
         LocalDate fechaEstimadaLlegada= resultado.getDate("fechaEstimadaLlegada").toLocalDate();
         LocalTime horaEstimadaLlegada = resultado.getTime("HoraEstimadaLlegada").toLocalTime();
         String estadoViaje = resultado.getString("estadoViaje");
-        int idDetallesViaje = resultado.getInt("id_detallesViaje");
 
-        return new ViajeRegular(idSucursal,idbus,idChofer,pasajeros,fechaSalida,horaSalida,fechaEstimadaLlegada,horaEstimadaLlegada,estadoViaje,idDetallesViaje,idViaje,idRuta);
+        return new ViajeRegular(idSucursal,idbus,idChofer,pasajeros,fechaSalida,horaSalida,fechaEstimadaLlegada,horaEstimadaLlegada,estadoViaje,idViaje,idRuta);
     }
 
-    private void crearConexion(){
-        ConexionDB conexionDB = new ConexionDB();
-        connection = conexionDB.getConnection();
-    }
-
-    private void cerrarConexion() throws SQLException {
-        connection.close();
-    }
 }

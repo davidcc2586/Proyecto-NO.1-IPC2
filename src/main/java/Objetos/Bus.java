@@ -13,12 +13,13 @@ public class Bus {
     private String estadoActividad;
     private String estado;
     private int id_sucursal;
+    private int id_sucursalUbicacionActual;
 
     public Bus(){
 
     }
 
-    public Bus(int id_bus, String imagen, String numeroPlaca, String marca, String modelo, int añoFabricacion, int capacidadPasajeros, int kilometrajeActual, String estadoActividad, String estado, int id_sucursal) {
+    public Bus(int id_bus, String imagen, String numeroPlaca, String marca, String modelo, int añoFabricacion, int capacidadPasajeros, int kilometrajeActual, String estadoActividad, String estado, int id_sucursal, int id_sucursalUbicacionActual) {
         this.id_bus = id_bus;
         this.imagen = imagen;
         this.numeroPlaca = numeroPlaca;
@@ -30,6 +31,7 @@ public class Bus {
         this.estadoActividad = estadoActividad;
         this.estado = estado;
         this.id_sucursal = id_sucursal;
+        this.id_sucursalUbicacionActual = id_sucursalUbicacionActual;
     }
 
     public int getId_bus() {
@@ -76,6 +78,10 @@ public class Bus {
         return id_sucursal;
     }
 
+    public int getId_sucursalUbicacionActual() {
+        return id_sucursalUbicacionActual;
+    }
+
     public void setId_bus(int id_bus) {
         this.id_bus = id_bus;
     }
@@ -118,5 +124,9 @@ public class Bus {
 
     public void setId_sucursal(int id_sucursal) {
         this.id_sucursal = id_sucursal;
+    }
+
+    public void setId_sucursalUbicacionActual(int id_sucursalUbicacionActual) {
+        this.id_sucursalUbicacionActual = id_sucursalUbicacionActual;
     }
 }

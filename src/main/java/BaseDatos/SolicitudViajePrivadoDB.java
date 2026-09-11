@@ -11,9 +11,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SolicitudViajePrivadoDB {
-
-    private Connection connection ;
+public class SolicitudViajePrivadoDB extends DB {
 
     public SolicitudViajePrivadoDB(){
 
@@ -73,12 +71,4 @@ public class SolicitudViajePrivadoDB {
         return new SolicitudViajePrivado(idSolicitudViajePrivado,cantidadPasajeros,distancia,idUsuario,idSucursal,direccionDestino,latitud,longitud,fechaSalida,horaSalida,fechaEstimadaRegreso,horaEstimadaRegreso,costo,estadoSolicitud, estadoPago);
     }
 
-    private void crearConexion(){
-        ConexionDB conexionDB = new ConexionDB();
-        connection = conexionDB.getConnection();
-    }
-
-    private void cerrarConexion() throws SQLException {
-        connection.close();
-    }
 }

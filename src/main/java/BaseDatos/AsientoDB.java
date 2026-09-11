@@ -10,8 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AsientoDB {
-    private Connection connection;
+public class AsientoDB extends DB {
 
     public List<Asiento> obtenerAsientosDisponibles(int id_bus) throws SQLException{
         crearConexion();
@@ -37,12 +36,4 @@ public class AsientoDB {
         return new Asiento(numero_asiento,id_bus,estado);
     }
 
-    private void crearConexion(){
-        ConexionDB conexionDB = new ConexionDB();
-        connection = conexionDB.getConnection();
-    }
-
-    private void cerrarConexion() throws SQLException {
-        connection.close();
-    }
 }

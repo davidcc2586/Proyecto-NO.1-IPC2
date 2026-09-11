@@ -8,10 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Usuario usuario = (Usuario) session.getAttribute("usuario");
-    String vista = request.getParameter("vista");
-    if (vista == null || vista.isEmpty()) {
-        vista = "general";
-    }
 %>
 <!DOCTYPE html>
 <html>

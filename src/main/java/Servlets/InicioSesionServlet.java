@@ -47,7 +47,7 @@ public class InicioSesionServlet extends HttpServlet {
 
                         break;
                     case "ADMIN_SUCURSAL":
-
+                        request.getRequestDispatcher("/javascript/VentanaAdminSucursal/ventanaInicioAdminSucursal.jsp").forward(request, response);
                         break;
                 }
             } else {

@@ -8,10 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class RutaRegularDB {
-
-    private Connection connection;
-
+public class RutaRegularDB extends DB{
     public RutaRegularDB() {
 
     }
@@ -38,14 +35,5 @@ public class RutaRegularDB {
         double distancia = resultSet.getDouble("distancia");
         double precio = resultSet.getDouble("precio");
         return new RutaRegular(id_rutaRegular,id_sucursalInicio,id_sucursalDestino,distancia,precio);
-    }
-
-    private void crearConexion(){
-        ConexionDB conexionDB = new ConexionDB();
-        connection = conexionDB.getConnection();
-    }
-
-    private void cerrarConexion() throws SQLException {
-        connection.close();
     }
 }
